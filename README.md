@@ -1,1 +1,3 @@
-# -opensesame-custom-gui-plugin-example
+# opensesame-custom-gui-plugin-example
+# WIP!
+
