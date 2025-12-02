@@ -35,13 +35,11 @@ class ListWithAdd(QtWidgets.QWidget):
         v.addLayout(h)
 
         # Connect button
-        self.add_btn.clicked.connect(self.add_item)
-        
+        self.add_btn.clicked.connect(self.add_item)        
         self.list.itemChanged.connect(self.on_item_changed)        
 
     def on_item_changed(self):
         self.textChanged.emit(self.text())
-
     
     def text(self):
         """ We need this for serialization (for script view and saving) """
@@ -60,13 +58,11 @@ class ListWithAdd(QtWidgets.QWidget):
         if ok and text:
             self.list.addItem(text)
 
-
 class ExampleCustomPlugin(Item):
     def reset(self):
         """Resets plug-in to initial values."""
         self.var.checkbox = 'yes'
         #self.var.custom_list = ''
-
 
     def prepare(self):
         """The preparation phase of the plug-in goes here."""
@@ -77,7 +73,6 @@ class ExampleCustomPlugin(Item):
     def run(self):
         """The run phase of the plug-in goes here."""
         self.set_item_onset(self.c.show())
-
 
 class QtExampleCustomPlugin(ExampleCustomPlugin, QtAutoPlugin):
     def __init__(self, name, experiment, script=None):
@@ -97,5 +92,5 @@ class QtExampleCustomPlugin(ExampleCustomPlugin, QtAutoPlugin):
         self.edit_vbox.insertWidget(index, cl)
 
         # Let's have it managed like a line edit. This means the ListWithAdd
-        # must quack like a line edit, emitting the right signals, et.c
+        # must quack like a line edit, emitting the right signals, etc.
         self.auto_line_edit['custom_list'] = cl
